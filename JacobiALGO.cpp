@@ -33,7 +33,6 @@ public:
 
 };
 
-// 2 start .
 // Compute rotation values (cosine c and sine s) 
 // for Jacobi eigenvalue method
 void computeRotation(const vector<vector<double>>& A, int p, int q, double& c, double& s) {
