@@ -71,9 +71,11 @@ void applyRotation(vector<vector<double>>& A, vector<vector<double>>& V, int p, 
     for (int i = 0; i < n; ++i) {
         double vip = V[i][p], viq = V[i][q];
         V[i][p] = c*vip - s*viq;
-        V[i][q] = s*vip + c*viq;
+         V[i][q] = s*vip + c*viq;
     }
 }
+
+3 start(From down)
 
 
 
