@@ -75,7 +75,69 @@ void applyRotation(vector<vector<double>>& A, vector<vector<double>>& V, int p, 
     }
 }
 
-3 start(From down)
+
+
+// do here number 3
+
+
+
+
+
+
+
+
+
+
+
+// Function to print eigenvectors where each column of the matrix is treated as an eigenvector
+static void printEigenvectorsAsColumns(const vector<vector<double>>& V){
+    int n = V.size();   // Get the size of the matrix (assuming square matrix: n x n)
+    cout << "Eigenvectors (columns):\n";
+
+    // Loop through each column (eigenvector)
+    for(int col = 0; col < n; ++col){
+        cout << "v[" << col << "] = [ ";
+        
+        // Loop through each row to print the current column values
+        for(int row = 0; row < n; ++row){
+            cout << setprecision(6) << V[row][col];   // Print element with 6-digit precision
+            if(row < n-1) cout << ", ";              // Add a comma unless it's the last element
+        }
+        cout << " ]\n";  // End of current eigenvector
+    }
+    cout << "\n";  // Extra newline for readability
+}
+
+// Function to print a matrix with a given name
+static void printMatrix(const vector<vector<double>>& M, const string& name){
+    cout << name << ":\n";  // Print the name of the matrix
+
+    // Loop through each row of the matrix
+    for(auto &row : M){
+        cout << "[ ";
+        
+        // Loop through each element in the row
+        for(size_t j=0; j<row.size(); j++){
+            cout << setprecision(6) << row[j];   // Print element with 6-digit precision
+            if(j < row.size()-1) cout << ", ";  // Add a comma unless it's the last element
+        }
+        cout << " ]\n";  // End of row
+    }
+    cout << "\n";  // Extra newline after matrix
+}
+
+// Function to print a vector with a given name
+static void printVector(const vector<double>& v, const string& name){
+    cout << name << ": [";
+
+    // Loop through each element of the vector
+    for(size_t i=0; i<v.size(); i++){
+        cout << setprecision(6) << v[i];   // Print element with 6-digit precision
+        if(i < v.size()-1) cout << ", ";   // Add a comma unless it's the last element
+    }
+    cout << "]\n\n";  // Close vector and add extra newline
+}
+
 
 
 
