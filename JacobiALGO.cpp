@@ -172,35 +172,35 @@ static void printVector(const vector<double>& v, const string& name){
 
 
 bool validateEigenSolution(const vector<vector<double>>& A, const vector<double>& eigenvalues, const vector<vector<double>>& V, double tol = 1e-8) {
-    int n = A.size();
-    vector<vector<double>> AV(n, vector<double>(n,0.0));
+    int n = A.size(); //matrix size
+    vector<vector<double>> AV(n, vector<double>(n,0.0)); //store A*V
     for(int i=0;i<n;i++)
         for(int j=0;j<n;j++)
             for(int k=0;k<n;k++)
-                AV[i][j] += A[i][k]*V[k][j];
+                AV[i][j] += A[i][k]*V[k][j]; // multiply A and V
 
-    vector<vector<double>> VLambda(n, vector<double>(n,0.0));
+    vector<vector<double>> VLambda(n, vector<double>(n,0.0)); // store V*Λ
     for(int i=0;i<n;i++)
         for(int j=0;j<n;j++)
-            VLambda[i][j] = V[i][j]*eigenvalues[j];
+            VLambda[i][j] = V[i][j]*eigenvalues[j]; // scale each column by eigenvalue
 
     for(int i=0;i<n;i++)
         for(int j=0;j<n;j++)
-            if(abs(AV[i][j]-VLambda[i][j])>tol) return false;
+            if(abs(AV[i][j]-VLambda[i][j])>tol) return false; // compare entries
 
-    return true;
+    return true; // valid if all matched
 }
 
 bool validateOrthogonality(const vector<vector<double>>& V, double tol = 1e-8) {
     int n = V.size();
     for(int i=0;i<n;i++){
         for(int j=i+1;j<n;j++){
-            double dot = 0.0;
-            for(int k=0;k<n;k++) dot += V[k][i]*V[k][j];
-            if(abs(dot) > tol) return false;
+            double dot = 0.0; // dot product init
+            for(int k=0;k<n;k++) dot += V[k][i]*V[k][j];  // compute dot product
+            if(abs(dot) > tol) return false;  // if not orthogonal
         }
     }
-    return true;
+    return true;   // all columns orthogonal
 }
 
 bool validateEigenvectors(const vector<vector<double>>& A, const vector<double>& eigenvalues, const vector<vector<double>>& V, double tol=1e-8) {
