@@ -145,6 +145,65 @@ static void printVector(const vector<double>& v, const string& name){
 
 
 
+bool validateEigenSolution(const vector<vector<double>>& A, const vector<double>& eigenvalues, const vector<vector<double>>& V, double tol = 1e-8) {
+    int n = A.size();
+    vector<vector<double>> AV(n, vector<double>(n,0.0));
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            for(int k=0;k<n;k++)
+                AV[i][j] += A[i][k]*V[k][j];
+
+    vector<vector<double>> VLambda(n, vector<double>(n,0.0));
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            VLambda[i][j] = V[i][j]*eigenvalues[j];
+
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            if(abs(AV[i][j]-VLambda[i][j])>tol) return false;
+
+    return true;
+}
+
+bool validateOrthogonality(const vector<vector<double>>& V, double tol = 1e-8) {
+    int n = V.size();
+    for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            double dot = 0.0;
+            for(int k=0;k<n;k++) dot += V[k][i]*V[k][j];
+            if(abs(dot) > tol) return false;
+        }
+    }
+    return true;
+}
+
+bool validateEigenvectors(const vector<vector<double>>& A, const vector<double>& eigenvalues, const vector<vector<double>>& V, double tol=1e-8) {
+    int n = A.size();
+    for(int j=0;j<n;j++){
+        for(int i=0;i<n;i++){
+            double Av_i = 0.0;
+            for(int k=0;k<n;k++) Av_i += A[i][k]*V[k][j];
+            if(abs(Av_i - eigenvalues[j]*V[i][j]) > tol) return false;
+        }
+    }
+    return true;
+}
+
+bool isSymmetric(const vector<vector<double>>& A, double tol = 1e-8) {
+    int n = A.size();
+    for(int i=0;i<n;i++)
+        for(int j=i+1;j<n;j++)
+            if(abs(A[i][j]-A[j][i])>tol) return false;
+    return true;
+}
+
+
+
+
+
+
+
+
 
 
 
