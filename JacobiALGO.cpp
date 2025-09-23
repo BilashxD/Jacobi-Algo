@@ -81,6 +81,7 @@ void applyRotation(vector<vector<double>>& A, vector<vector<double>>& V, int p, 
 
 // number 3 ok update my cood [AIJ]]
 
+// solve Loop or Shorting Eigenvalues
 
 
 void sortEigenvalues(vector<double>& eigenvalues, vector<vector<double>>& eigenvectors) {
@@ -121,7 +122,7 @@ void sortEigenvalues(vector<double>& eigenvalues, vector<vector<double>>& eigenv
         sortEigenvalues(eigenvalues,eigenvectors);
     }
 
-
+// number 4 do this worke
 
 // Function to print eigenvectors where each column of the matrix is treated as an eigenvector
 static void printEigenvectorsAsColumns(const vector<vector<double>>& V){
