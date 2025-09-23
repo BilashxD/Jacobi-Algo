@@ -77,12 +77,7 @@ void applyRotation(vector<vector<double>>& A, vector<vector<double>>& V, int p, 
     }
 }
 
-
-
-// number 3 ok update my cood [AIJ]]
-
 // solve Loop or Shorting Eigenvalues
-
 
 void sortEigenvalues(vector<double>& eigenvalues, vector<vector<double>>& eigenvectors) {
         int n = eigenvalues.size();
@@ -122,7 +117,7 @@ void sortEigenvalues(vector<double>& eigenvalues, vector<vector<double>>& eigenv
         sortEigenvalues(eigenvalues,eigenvectors);
     }
 
-// number 4 do this worke
+// number 4 do this;
 
 // Function to print eigenvectors where each column of the matrix is treated as an eigenvector
 static void printEigenvectorsAsColumns(const vector<vector<double>>& V){
@@ -173,9 +168,7 @@ static void printVector(const vector<double>& v, const string& name){
     cout << "]\n\n";  // Close vector and add extra newline
 }
 
-
-
-
+//start 5 from here;
 
 
 bool validateEigenSolution(const vector<vector<double>>& A, const vector<double>& eigenvalues, const vector<vector<double>>& V, double tol = 1e-8) {
