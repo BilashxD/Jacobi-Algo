@@ -77,7 +77,8 @@ void applyRotation(vector<vector<double>>& A, vector<vector<double>>& V, int p, 
     }
 }
 
-// solve Loop or Shorting Eigenvalues
+
+// solve Loop or Shorting Eigenvalues(3)
 
 void sortEigenvalues(vector<double>& eigenvalues, vector<vector<double>>& eigenvectors) {
         int n = eigenvalues.size();
@@ -168,8 +169,9 @@ static void printVector(const vector<double>& v, const string& name){
     cout << "]\n\n";  // Close vector and add extra newline
 }
 
-//start 5 from here;
 
+
+//verifying that a matrix’s eigenvalues and eigenvectors are correct (decomposition works), the eigenvectors are orthogonal, and the original matrix is symmetric.
 
 bool validateEigenSolution(const vector<vector<double>>& A, const vector<double>& eigenvalues, const vector<vector<double>>& V, double tol = 1e-8) {
     int n = A.size(); //matrix size
@@ -216,11 +218,11 @@ bool validateEigenvectors(const vector<vector<double>>& A, const vector<double>&
 }
 
 bool isSymmetric(const vector<vector<double>>& A, double tol = 1e-8) {
-    int n = A.size();
+    int n = A.size();  // matrix size
     for(int i=0;i<n;i++)
         for(int j=i+1;j<n;j++)
-            if(abs(A[i][j]-A[j][i])>tol) return false;
-    return true;
+            if(abs(A[i][j]-A[j][i])>tol) return false;  // check A[i][j] = A[j][i] 
+    return true;    // matrix symmetric
 }
 
 
