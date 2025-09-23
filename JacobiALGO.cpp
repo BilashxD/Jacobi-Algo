@@ -79,7 +79,7 @@ void applyRotation(vector<vector<double>>& A, vector<vector<double>>& V, int p, 
 
 
 
-// do here number 3
+// number 3 ok update my cood [AIJ]]
 
 
 
