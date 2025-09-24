@@ -222,7 +222,54 @@ bool isSymmetric(const vector<vector<double>>& A, double tol = 1e-8) {
     for(int i=0;i<n;i++)
         for(int j=i+1;j<n;j++)
             if(abs(A[i][j]-A[j][i])>tol) return false;  // check A[i][j] = A[j][i] 
-    return true;    // matrix symmetric HI T
+    return true;    // matrix symmetric 
+}
+
+int main(){
+    cout << "=================== Jacobi Eigenvalue Solver ===================\n\n";
+
+    int n;
+    cout << "Enter the size of the square matrix: ";
+    cin >> n;
+
+    vector<vector<double>> A(n, vector<double>(n,0.0));
+    cout << "\nEnter all elements row by row:\n";
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cout << "Element [" << i+1 << "," << j+1 << "]: ";
+            cin >> A[i][j];
+        }
+    }
+
+    cout << "\nInput matrix:\n";
+    JacobiEigenSolver::printMatrix(A,"Matrix A");
+
+    if(!isSymmetric(A)){
+        cout << "Error: The matrix is not symmetric. Jacobi method requires a symmetric matrix.\n";
+        return 0;
+    } else {
+        cout << "Matrix is symmetric. Proceeding...\n\n";
+    }
+
+    JacobiEigenSolver solver(1e-10,1000);
+    vector<double> eigenvalues;
+    vector<vector<double>> eigenvectors;
+    solver.solve(A,eigenvalues,eigenvectors);
+
+    cout << "Computed eigenvalues and eigenvectors:\n";
+    JacobiEigenSolver::printVector(eigenvalues,"Eigenvalues");
+    JacobiEigenSolver::printEigenvectorsAsColumns(eigenvectors);
+
+    cout << "Validation Results:\n";
+    cout << "  Eigen decomposition reconstruction: " << (validateEigenSolution(A,eigenvalues,eigenvectors)?"Passed":"Failed") << "\n";
+    cout << "  Eigenvector orthogonality: " << (validateOrthogonality(eigenvectors)?"Passed":"Failed") << "\n";
+    cout << "  Eigenvectors satisfy Av = lambda*v: " << (validateEigenvectors(A,eigenvalues,eigenvectors) ? "Passed" : "Failed") << "\n";
+
+
+
+    cout << "\n========================= Program Finished =========================\n";
+
+    return 0;
 }
 
 
