@@ -222,7 +222,7 @@ bool isSymmetric(const vector<vector<double>>& A, double tol = 1e-8) {
     for(int i=0;i<n;i++)
         for(int j=i+1;j<n;j++)
             if(abs(A[i][j]-A[j][i])>tol) return false;  // check A[i][j] = A[j][i] 
-    return true;    // matrix symmetric
+    return true;    // matrix symmetric HI T
 }
 
 
